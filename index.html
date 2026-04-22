@@ -1,122 +1,81 @@
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InfoGarcía 24</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background-color: #f0f2f5; font-family: -apple-system, sans-serif; }
-        .navbar { background-color: #ffffff; border-bottom: 1px solid #dee2e6; }
-        .navbar-brand { color: #002d5a !important; font-weight: 800; font-size: 1.4rem; }
-        .badge-time { background: #f8f9fa; color: #6c757d; padding: 6px 15px; border-radius: 30px; font-size: 0.85rem; font-weight: 600; border: 1px solid #dee2e6; }
-    </style>
-</head>
-<body>
-    <nav class="navbar sticky-top shadow-sm py-2">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="#">INFO<span style="color:#ff6600;">GARCÍA</span>24</a>
-            <span class="badge-time">🕒 15:23</span>
-        </div>
-    </nav>
-    <div class="container py-4">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <h6 class="text-muted small mb-3 fw-bold" style="letter-spacing: 1px;">PORTAL DE INFORMACIÓN GARCÍA, N.L.</h6>
-                
-    <div class="card mb-4 border-0 shadow-sm" style="border-radius: 15px; border-top: 5px solid #ff6600 !important;">
-        <div class="card-body">
-            <span class="badge bg-light text-dark mb-2">EDITORIAL</span>
-            <h5 class="fw-bold" style="color: #002d5a;">COLUMNA: La estabilidad operativa como base del crecimiento en García</h5>
-            <p class="text-secondary small mb-0">Analistas sugieren que mantener el flujo de producción actual es el factor determinante para asegurar los bonos y excedentes de este año.</p>
-        </div>
-    </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">El Universal</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>InfoGarcía 24 | El portal de la industria</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body { background:#f0f2f5; font-family: sans-serif; }
+            .navbar { background: #002d5a; border-bottom: 3px solid #ff6600; }
+            .card-destacada { border-radius: 15px; overflow: hidden; border-left: 8px solid #dc3545; }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar py-2"><div class="container d-flex justify-content-between align-items-center">
+            <span class="fw-bold text-white">INFO<span style="color:#ff6600;">GARCÍA</span>24</span>
+            <span class="badge bg-danger animate-pulse">EN VIVO: 16:12</span>
+        </div></nav>
+
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card card-destacada mb-4 border-0 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=60" class="card-img-top" style="height:200px; object-fit:cover;">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">LO MÁS LEÍDO EN GARCÍA</span>
+                            <h4 class="fw-bold" style="letter-spacing:-1px;">¡ALERTA INDUSTRIAL! El desplome global que dejó sin utilidades al sector</h4>
+                            <p class="text-secondary small">Expertos revelan por qué este mayo el PTU será nulo en las principales plantas de Nuevo León.</p>
+                            <a href="realidad-ptu-2026.html" class="btn btn-danger w-100 fw-bold rounded-pill">ABRIR REPORTAJE COMPLETO</a>
                         </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Samuel García asegura que Nuevo León está en el mejor momento y listo para el Mundial - El Universal</h6>
-                        <a href="https://news.google.com/rss/articles/CBMijAJBVV95cUxNUUcxWjJRYWlhRm12QWVtUkVuLXZHSS0tc3pJZVJldkFWZ1RzaUZ0NjdFYVBCbkpGdEtieVRuVThGRWs1Wm5hdHdBeDlfcS1DQ25Vdl9NbXExLVIwMXVOZUt6eWFnWjZnQW8wM0hpWGlxQURpVmcydmZVR1VVRDl5b1hGSi1CS3pmbDFhaHdUWE1iTXJ6OWVUWUNCTXBqbHVQRm4waU9PdE5UZU05MW9TZE1FcTVyZjdMM3JVeVhLcWhjamZIdHpkYk5lR2x3ZG1qSWlaR0hMUXpSUm9qNWdJcGI2RFlpLVRCNkJrclZPVnA2WVFGZ05DNGRjWE5KQ1VOeEt4MjdKRmQyeWhV0gGgAkFVX3lxTE5lR2ZZUFpqMjROY3psNEMzYWdsdGh5NldReWN1TFVBX0pRRGdrdFAtRVVwckhGUTZURC05WHJNZHNoTkN2MFQzT25oQlZSM3l5N2l2U1VXNXRMd3FiVUtnc24yYzF3TnAwLU9iUUVMaXBDaTJLeHY5MlhXeTZEYUlPY3hTUEhlVzcyOWZoeWZSQ1hHdHpqanFULUJUYjNLMmVGc2I0R2Rpd0lfaG9oMkRoaDV6bVgzZmtlZFB6YWEyUU5heFFPaWlSNlJHbnZndHg4SUxXbW81TE1fdkptOXlueGExdll0bno2NTlKYmRCdVdHWnZRSkxBSXVQSEFDRmJRQnJFUEotT2JsSS1LLTBfUUFia3lrd1JyUzQzWlVXag?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
                     </div>
-                </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">Gobierno de Nuevo León</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Destaca Samuel García potencial de NL ante banqueros en Foro Bloombergnef 2026 - Gobierno de Nuevo León</h6>
-                        <a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNd3B2UlQ1Qm5RTmJWaE0xTjY5MzVpcU85eXJfMFpiVDFjT0RxTnRBXzBGT1Z0NHB6RXBFQnR1eXpleEFxcllzWTAzeFdXamEzVEJiNkFvdExvY1UxcjQyYWJyRE5USW9oVHlJZjZFYWY0d1dzQWdha3gzVGtNWktibzhYejRSemJMTXpRS2gzcUw2a1hjc0E4Nll2LVZpblJ2WUZfT1BWZnVxbEJ3QTV6enRxUQ?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="text-muted fw-bold mb-0">NOTICIAS LOCALES Y CLIMA</h6>
+                        <hr class="flex-grow-1 ms-3">
                     </div>
+                    
+            <div class="card mb-2 border-0 shadow-sm" style="border-radius:10px;">
+                <div class="card-body py-2">
+                    <span class="text-muted fw-bold" style="font-size:0.6rem;">El Universal</span>
+                    <h6 class="mb-1 fw-bold" style="font-size:0.85rem;">Samuel García asegura que Nuevo León está en el mejor momento y listo para el Mundial - El Universal</h6>
+                    <a href="https://news.google.com/rss/articles/CBMijAJBVV95cUxNUUcxWjJRYWlhRm12QWVtUkVuLXZHSS0tc3pJZVJldkFWZ1RzaUZ0NjdFYVBCbkpGdEtieVRuVThGRWs1Wm5hdHdBeDlfcS1DQ25Vdl9NbXExLVIwMXVOZUt6eWFnWjZnQW8wM0hpWGlxQURpVmcydmZVR1VVRDl5b1hGSi1CS3pmbDFhaHdUWE1iTXJ6OWVUWUNCTXBqbHVQRm4waU9PdE5UZU05MW9TZE1FcTVyZjdMM3JVeVhLcWhjamZIdHpkYk5lR2x3ZG1qSWlaR0hMUXpSUm9qNWdJcGI2RFlpLVRCNkJrclZPVnA2WVFGZ05DNGRjWE5KQ1VOeEt4MjdKRmQyeWhV0gGgAkFVX3lxTE5lR2ZZUFpqMjROY3psNEMzYWdsdGh5NldReWN1TFVBX0pRRGdrdFAtRVVwckhGUTZURC05WHJNZHNoTkN2MFQzT25oQlZSM3l5N2l2U1VXNXRMd3FiVUtnc24yYzF3TnAwLU9iUUVMaXBDaTJLeHY5MlhXeTZEYUlPY3hTUEhlVzcyOWZoeWZSQ1hHdHpqanFULUJUYjNLMmVGc2I0R2Rpd0lfaG9oMkRoaDV6bVgzZmtlZFB6YWEyUU5heFFPaWlSNlJHbnZndHg4SUxXbW81TE1fdkptOXlueGExdll0bno2NTlKYmRCdVdHWnZRSkxBSXVQSEFDRmJRQnJFUEotT2JsSS1LLTBfUUFia3lrd1JyUzQzWlVXag?oc=5" target="_blank" class="small text-decoration-none fw-bold" style="font-size:0.75rem;">VER NOTA ORIGINAL →</a>
                 </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">INFO7</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Nuevo León está listo para Mundial 2026: Samuel García - INFO7</h6>
-                        <a href="https://news.google.com/rss/articles/CBMilgFBVV95cUxOZHh6VlFGeDBzVVlFYmx1bkEtYnQ2bG5EOXVJdjM2bm5iY05hN1VpTlQtMlR5bEVwQUpqRmdoaWhkTmlqV0RUTVNfLUNTNGFsNzBiVUpYSVh5NGttTVQzZTdXWkdyQnNLeFJONFhibTBhU29oUVY2UEVRdEdDeVZhdVJVTzNBVVAxbEJKUXBESFQtS1JOSkE?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
+            </div>
+            <div class="card mb-2 border-0 shadow-sm" style="border-radius:10px;">
+                <div class="card-body py-2">
+                    <span class="text-muted fw-bold" style="font-size:0.6rem;">facebook.com</span>
+                    <h6 class="mb-1 fw-bold" style="font-size:0.85rem;">Automóvil choca contra un camión urbano en San Pedro Garza García, Nuevo León; dos mujeres fueron atendidas por malestares https://mile.io/4sNreKP - facebook.com</h6>
+                    <a href="https://news.google.com/rss/articles/CBMi9gFBVV95cUxNZmY3YS1nY2R1aVg4MWdFc0c3TGpjYzdJb3dwZlhELVBhT2Nid1lnUFNrblJMYnQtdmJfVEJRMHp4RmgyNktWYU5mbll2ZThwM3pWUHRZNWVrdzN5RkM2dHQxVDJuQXdZM2FvamhyYmdfOUQtT1BhRTlhb0lPa0dEWVZoNFB0SlMzdmV1YV85cGhJUDhhX3hGYWN2cWNmLTF3dGFGYzI5ZFBna19aRkxKRzBXeTlvRzhfamhpcjgzWXFWNHlGb0ZBSV8tTEN0UWpHU25OVkx3STdGWTFGQk5XT3p3RXo3cXFqNU1JRGdxakNpazdycGc?oc=5" target="_blank" class="small text-decoration-none fw-bold" style="font-size:0.75rem;">VER NOTA ORIGINAL →</a>
+                </div>
+            </div>
+            <div class="card mb-2 border-0 shadow-sm" style="border-radius:10px;">
+                <div class="card-body py-2">
+                    <span class="text-muted fw-bold" style="font-size:0.6rem;">gamavision.com</span>
+                    <h6 class="mb-1 fw-bold" style="font-size:0.85rem;">Samuel García destaca potencial de Nuevo León en su gira laboral por Nueva York - gamavision.com</h6>
+                    <a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxNa2wwNFRWdEJCbzlPU3ZvbGd2Z2NPNzVyZjFXNHkyY3dkeGdfQ0NhRTNHMnlfZGpSYkJvdE94S1kwdDNrWnlEQnRPS0ZITXUyRWxIdEpmNG5YdkJtVF8xZlFsallhaHBRQ19SYUs1elVwdmdWYUU2VEhPeS1ZUElQQ2ZuNFRjNUlYRTd3Wk94Y0Jqa2syRzZVVnVjQnROZ081N2pkTXFxNFZHT2MxOTNpaQ?oc=5" target="_blank" class="small text-decoration-none fw-bold" style="font-size:0.75rem;">VER NOTA ORIGINAL →</a>
+                </div>
+            </div>
+            <div class="card mb-2 border-0 shadow-sm" style="border-radius:10px;">
+                <div class="card-body py-2">
+                    <span class="text-muted fw-bold" style="font-size:0.6rem;">N+</span>
+                    <h6 class="mb-1 fw-bold" style="font-size:0.85rem;">Matan a Menor en Paraje San José en García, Nuevo León - N+</h6>
+                    <a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQaEp2c2ZFNWNUZTh6LUhLaWtvdDlwOGUzWnJ1c3ZwcVRmQ2NSSlZpTnhKRWplc2RlU3VGWEllUFZQN2dRRXpTQm5QbnN6eTctaDFnNzN1R1AzNFphRnlaRE9ycnpQMmRyZ0YwRjJrYm0xczJ1Vk52RWdEb3lhUW1Ja2gxcElJQkl2cURrVGNhN1djWlc1dUlRRnRIWHNMeUd6X2t2QWd3QUUxRjlaX0JSbi1YS3psVkplMkx2RVJB?oc=5" target="_blank" class="small text-decoration-none fw-bold" style="font-size:0.75rem;">VER NOTA ORIGINAL →</a>
+                </div>
+            </div>
+            <div class="card mb-2 border-0 shadow-sm" style="border-radius:10px;">
+                <div class="card-body py-2">
+                    <span class="text-muted fw-bold" style="font-size:0.6rem;">El Heraldo de México</span>
+                    <h6 class="mb-1 fw-bold" style="font-size:0.85rem;">Anuncia Manuel Guerra Cavazos entrega de 10 mil árboles como parte del programa “Adopta vida” en García, NL - El Heraldo de México</h6>
+                    <a href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxQek5JUGlrb3ZQX3I1cEdNQVo3MWozbWFhaU82azJXRmd6Ql9xVHJLck94eWI4eWtsODhfM2NjSDJRaGo1WXcta2FzOW82LTVfZG9KcVlybmhVLUh5RUY0cVVPTW9UMWJ2SDRfUS1nWGwyWFNibS1jWGJvOXdxa3RneTYxNmNoVVVyQmo5cDZQYXlqTWhGYTRMdTR0QVJZUnRMVDJNeXlXUmV1TkpOeXk5WDY2SGFHY3lfaGx3MXFLaERqZ3Fnd1loYWJLOTdyQ3JOSzU4VVJTbFV6OElPVEJPMjZJYmpIUHRiYTU3cUtydjNDXzVvWXJ1YUFR0gH_AUFVX3lxTFBraXRnc25RX1Rvdm93SGpXM2tqRTZXcjN0UzgwbldEazRVM25jSndyZFVkOGJocjhtUnAtUFlSYlhQeFFwX1BLYmZnYS1rUFRDNjBOOUNmRnhTNmxPejNGcjVxcXhMcGZhNmREMWU4elVEVHhPNVJxLVh1TmxDWUFQNEh5NDdTY3BvWGlBSHJqRDdPcXZ1MDlLU0VyRXVfLVdwTUppalAtUHp2WEVwdUtDZUMycjdSTDF0RTlQX1VaZ1M4TjZCcFV3X3hNekRmSTNaelprdXVTTHEyZzlVVW1LXzNFU1gwTnFzaXZDUGdKUGw1bmhpaldCT0wzbzlITQ?oc=5" target="_blank" class="small text-decoration-none fw-bold" style="font-size:0.75rem;">VER NOTA ORIGINAL →</a>
+                </div>
+            </div>
+                    
+                    <div class="text-center mt-5 text-muted small">
+                        <p>© 2026 InfoGarcía 24 - Periodismo de Datos Industrial<br>García, Nuevo León, México</p>
                     </div>
-                </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">Milenio</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Samuel García anuncia reuniones diarias de seguridad al iniciar Mundial en Monterrey - Milenio</h6>
-                        <a href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPUFNhbkdwNU13LWVQVUp1d3lGMV9yMEkyaGJPT2RNeG1NVmNXYm5ES05lWXZYcTZVS1F4YWVVQ0ZYc291ZzRFZ1BabGhNVDRESmdSWlJYaE02bmVkY1Y5eEFZWFhPUmpvdHk1YUdwNzlWTDNoYmZZN0FnQmtOX2FzLVNrVkpaMVBuSWVQcmUtTGV6QnZIelp6dko0U0JtLU9EMXVnMHFKMS1mNm9MbzJjelFPZEt1ZnVa0gG4AUFVX3lxTE03RnA0a1UwN0xKTnpUMHRMMUJOOVBSRDdPYlVQRFZwRFRnZXhKQVBvY2tDMVFGY29aUE9fTXZIVGZ4OVdFMUtRMVlQWEw1Y2JtekstRU5zR096aWxkVW15TGI3dnkzZ0xqS2NDNUp6VVRzQU9PTlRjWWNnSnJuNTZGWUYybEIxLVoyTFEweDY0dVJoWjdYMVNPTnZ5RWpRbHY4QXBYNWRIcERaRWZmYVllWXg1LTRidHk?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
-                    </div>
-                </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">Telediario México</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Samuel García anuncia reuniones diarias de seguridad por Mundial 2026 - Telediario México</h6>
-                        <a href="https://news.google.com/rss/articles/CBMingFBVV95cUxOZlR6eGEzN2Ewb0RiMy1wYW0zVjRGVE0weXVWaVJnN2psNWlCdGhsOG1WVmJ1T2J0eDhjdG5LOVF5VjMyLTRiYkNiVGZYVmxnWGVPVHEza2xIYmpBUXlMTjk3cVA3REdiRXg3ZXQtb09MM2hPYWt0enB0MGM0R2xFOXhieDVZZ3Y5dC00YXRHUkdYajZWaUg5V3ZLbmsxUdIBngFBVV95cUxOZ1JsSnhvSVJpYmZNWC02WlVmUGRMcDBWZkliaS1DMTlSTVZuVi1zNDNOSEZodkNTRVYtSUR1YWJkaDdKOGRWNFBJcXE5Q3J6aFRfVlkxSEpSblhHZDEyNUxvTDJVd3hKXzdJdW5adFJuc19nOHNic1pBRmd1c2JKYWRtZ2lHVHhGUnMtcFBXQkV2TGFsUjZUSXFkV25XQQ?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
-                    </div>
-                </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">Reporte Indigo</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Samuel García inaugura pisos prioritarios del nuevo cuartel de Fuerza Civil previo a Mundial - Reporte Indigo</h6>
-                        <a href="https://news.google.com/rss/articles/CBMi5gFBVV95cUxPUWpIbzcxRHZDOERoN05zdG5IcWRYRkhlY3lKWk5ZMlo0djIyMlpyS19jd2k2Tko5SDNXMDBWbTlOLW1lYUw1M0NPejBUY3dqZ05XWWp2OFB5Z0lYVEV3RW05UHdxWkJScFItd1pONW1heDN3NmpQcFJwMW53cGlTbXNnekZ3X1FIZHFUXzJ2UWo3UzhhQzJFRVd4MElpdFFidFlnZDBRaXBVa2t3NWV3X180bGlIYVdIMlhxazJSaXB6ODhRVTZUTWZkNklnNGtLeV9PZXZFcVJLUlBQVFdiSEpvLVFjQdIB6wFBVV95cUxPZGIxRlh6dkZTck5LRTFac05MMVNWMVpsZkNSblBzc2dfc1FmRzlET2JDbDJyQnFUa2E4WWZyMzNtd3RrLTl5eWQ4Wjl1bmx6SjB3SGJGNmN5ajBub2VHNjN6Rk9LWnVleDZCUWdXNnRWdmN3Q013SnlwdmVYcE5RUVhZR3pNRW15NmxvSklLYkViNENJVXRmTWlfLTFwdVBmMVNMWjRIRkNzVGhTV1phZnBRNk9TVGs0V2VET2ZrSFNRbG02QURxOEdCZjQ0V20xUTV6Vi12MHdzaHZBcmsxb0p5U25NNFExejVF?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
-                    </div>
-                </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">El Heraldo de México</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Anuncia Manuel Guerra Cavazos entrega de 10 mil árboles como parte del programa “Adopta vida” en García, NL - El Heraldo de México</h6>
-                        <a href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxQek5JUGlrb3ZQX3I1cEdNQVo3MWozbWFhaU82azJXRmd6Ql9xVHJLck94eWI4eWtsODhfM2NjSDJRaGo1WXcta2FzOW82LTVfZG9KcVlybmhVLUh5RUY0cVVPTW9UMWJ2SDRfUS1nWGwyWFNibS1jWGJvOXdxa3RneTYxNmNoVVVyQmo5cDZQYXlqTWhGYTRMdTR0QVJZUnRMVDJNeXlXUmV1TkpOeXk5WDY2SGFHY3lfaGx3MXFLaERqZ3Fnd1loYWJLOTdyQ3JOSzU4VVJTbFV6OElPVEJPMjZJYmpIUHRiYTU3cUtydjNDXzVvWXJ1YUFR0gH_AUFVX3lxTFBraXRnc25RX1Rvdm93SGpXM2tqRTZXcjN0UzgwbldEazRVM25jSndyZFVkOGJocjhtUnAtUFlSYlhQeFFwX1BLYmZnYS1rUFRDNjBOOUNmRnhTNmxPejNGcjVxcXhMcGZhNmREMWU4elVEVHhPNVJxLVh1TmxDWUFQNEh5NDdTY3BvWGlBSHJqRDdPcXZ1MDlLU0VyRXVfLVdwTUppalAtUHp2WEVwdUtDZUMycjdSTDF0RTlQX1VaZ1M4TjZCcFV3X3hNekRmSTNaelprdXVTTHEyZzlVVW1LXzNFU1gwTnFzaXZDUGdKUGw1bmhpaldCT0wzbzlITQ?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
-                    </div>
-                </div>
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">Gob MX</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">Inaugura Gobierno de México Bachillerato Tecnológico en García, Nuevo León - Gob MX</h6>
-                        <a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxNUjdVbmQ4N2xXNDZZZktYT2UybnJBN2gwQW9pRTMyY0hia3dPVnhlQnJyVlllVTIzb1Fld29CQkRVM19uSnM5MkZOeXJnc2ItaHhpOVZzODYxbzVhdURqV3R1X1RfSGpnSnRSclA2QjJzQWFHRTIzSTg1cHdINmdCbWZXVmRyZnFWU3NzaExBOTROSVBON0ktSjU2SGdGNng3bXBabjlMQQ?oc=5" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
-                    </div>
-                </div>
-                <div class="text-center mt-5 mb-4 text-muted" style="font-size: 0.7rem;">
-                    &copy; 2026 InfoGarcía 24 - Comunicación Independiente
                 </div>
             </div>
         </div>
-    </div>
-</body>
-</html>
+    </body>
+    </html>
