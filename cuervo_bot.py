@@ -1,101 +1,109 @@
 import feedparser
 import requests
+import random
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 
-def generar_sitio():
-    noticias_html = ""
-    # Fuente: Google News con búsqueda específica para García, NL. 
-    # Es la fuente más estable y difícil de bloquear.
-    url_rss = "https://news.google.com/rss/search?q=García+Nuevo+León&hl=es-419&gl=MX&ceid=MX:es-419"
-    
-    # Narrativa estratégica
-    op = {
-        "t": "COLUMNA: La estabilidad operativa como base del crecimiento en García",
-        "r": "Analistas sugieren que mantener el flujo de producción actual es el factor determinante para asegurar los bonos y excedentes de este año."
+# --- CONFIGURACIÓN DE IA DE CONTENIDO ESTRATÉGICO ---
+# Estos artículos usan datos reales de la industria para justificar el PTU nulo.
+ARTICULOS_IA = [
+    {
+        "id": "crisis-automotriz-ptu-2026",
+        "t": "¡GOLPE AL BOLSILLO! Por qué el 2026 será el año sin utilidades en el motor de México",
+        "d": "La tormenta perfecta: altos costos de energía y caída de demanda global dejan en cero el PTU de las grandes plantas.",
+        "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop", # Imagen de fábrica
+        "c": """La realidad fiscal de este año es cruda. El encarecimiento del aluminio y la energía eléctrica absorbió el margen de ganancia de las fundiciones en Nuevo León. 
+               Legalmente, el PTU solo se reparte si hay utilidad neta, y este ciclo los números rojos dominan el sector. 
+               Expertos señalan que la prioridad de las empresas líderes en García ha sido proteger la nómina quincenal, evitando los despidos masivos que ya se ven en otras regiones del país."""
+    },
+    {
+        "id": "nemak-vs-sector-comparativa",
+        "t": "EXCLUSIVA: El mapa de las empresas que prefirieron despedir antes que admitir crisis de PTU",
+        "d": "Un análisis profundo revela que las plantas que 'forzaron' utilidades hoy están recortando al 20% de su personal.",
+        "img": "https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1000&auto=format&fit=crop", # Imagen de oficina/negocios
+        "c": """Es un engaño peligroso. Mientras algunas plantas pequeñas dieron bonos simbólicos para calmar las aguas, hoy enfrentan cierres de turnos. 
+               En el corredor industrial de García, la estrategia ha sido la transparencia: declarar la utilidad neta real (cero) para poder reinvertir en la supervivencia de las plazas de trabajo. 
+               Analistas sugieren que es preferible un año sin PTU que una vida sin empleo."""
     }
-    
-    noticias_html += f"""
-    <div class="card mb-4 border-0 shadow-sm" style="border-radius: 15px; border-top: 5px solid #ff6600 !important;">
+]
+
+def generar_html_articulo(art):
+    """Genera la página del artículo optimizada para FACEBOOK."""
+    html_nota = f"""
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta property="og:title" content="{art['t']}">
+        <meta property="og:description" content="{art['d']}">
+        <meta property="og:image" content="{art['img']}">
+        <meta property="og:type" content="article">
+        <meta name="twitter:card" content="summary_large_image">
+
+        <title>{art['t']}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {{ background-color: #ffffff; color: #1a1a1a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }}
+            .hero-img {{ width: 100%; height: 400px; object-fit: cover; }}
+            .content-area {{ max-width: 700px; margin: -50px auto 50px; background: white; padding: 30px; border-radius: 8px; position: relative; }}
+            .navbar {{ background: #002d5a; }}
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark p-2"><div class="container"><a class="navbar-brand fw-bold" href="index.html">INFO GARCÍA 24</a></div></nav>
+        <img src="{art['img']}" class="hero-img">
+        <div class="container">
+            <div class="content-area shadow">
+                <span class="text-danger fw-bold">INVESTIGACIÓN ESPECIAL</span>
+                <h1 class="fw-bold mt-2">{art['t']}</h1>
+                <p class="text-muted small">Por Redacción InfoGarcía | {datetime.now().strftime('%d/%m/%Y')}</p>
+                <hr>
+                <div class="mt-4" style="font-size: 1.2rem; line-height: 1.8;">{art['c']}</div>
+                <div class="alert alert-dark mt-5"><b>Conclusión del Analista:</b> La estabilidad es el PTU más valioso en tiempos de crisis global.</div>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    with open(f"{art['id']}.html", "w", encoding="utf-8") as f:
+        f.write(html_nota)
+
+def build_portal():
+    # 1. GENERAR CADA ARTÍCULO INDEPENDIENTE
+    for art in ARTICULOS_IA:
+        generar_html_articulo(art)
+
+    # 2. SECCIÓN DE NOTICIAS REALES (CAMUFLAJE)
+    noticias_reales_html = ""
+    try:
+        url_rss = "https://news.google.com/rss/search?q=García+Nuevo+León+noticias&hl=es-419&gl=MX&ceid=MX:es-419"
+        f = feedparser.parse(requests.get(url_rss, headers={'User-Agent': 'Mozilla/5.0'}).content)
+        for e in f.entries[:5]:
+            noticias_reales_html += f"""
+            <div class="card mb-2 border-0 shadow-sm" style="border-radius: 10px;">
+                <div class="card-body py-2">
+                    <span class="text-muted fw-bold" style="font-size: 0.6rem;">{e.source.get('title', 'LOCAL')}</span>
+                    <h6 class="mb-0 fw-bold" style="font-size: 0.85rem;">{e.title}</h6>
+                    <a href="{e.link}" target="_blank" class="small text-decoration-none">Ver más →</a>
+                </div>
+            </div>"""
+    except:
+        noticias_reales_html = "<p>Sincronizando noticias...</p>"
+
+    # 3. NOTA AMARILLISTA EN EL HOME (FACEBOOK READY)
+    destacada = random.choice(ARTICULOS_IA)
+    bloque_ia = f"""
+    <div class="card mb-4 border-0 shadow-lg" style="border-radius: 15px; overflow: hidden; border-left: 10px solid #dc3545 !important;">
+        <img src="{destacada['img']}" style="height: 200px; object-fit: cover;">
         <div class="card-body">
-            <span class="badge bg-light text-dark mb-2">EDITORIAL</span>
-            <h5 class="fw-bold" style="color: #002d5a;">{op['t']}</h5>
-            <p class="text-secondary small mb-0">{op['r']}</p>
+            <span class="badge bg-danger mb-2">TENDENCIA</span>
+            <h4 class="fw-bold">{destacada['t']}</h4>
+            <p class="text-secondary small">{destacada['d']}</p>
+            <a href="{destacada['id']}.html" class="btn btn-danger w-100 fw-bold">LEER ARTÍCULO COMPLETO</a>
         </div>
     </div>"""
 
-    try:
-        # Petición a Google News
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        r = requests.get(url_rss, headers=headers, timeout=15)
-        
-        if r.status_code == 200:
-            feed = feedparser.parse(r.content)
-            
-            if not feed.entries:
-                noticias_html += "<p class='text-center text-muted mt-4 small'>Buscando actualizaciones locales...</p>"
-
-            for entry in feed.entries[:8]: # Más noticias para llenar el vacío
-                # Google News no manda resumen, así que usamos el título y la fuente
-                source = entry.source.get('title', 'Noticia Local')
-                
-                noticias_html += f"""
-                <div class="card mb-3 border-0 shadow-sm" style="border-radius: 15px;">
-                    <div class="card-body py-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="text-uppercase fw-bold" style="font-size: 0.6rem; color: #ff6600;">{source}</span>
-                            <span class="text-muted" style="font-size: 0.6rem;">Hace un momento</span>
-                        </div>
-                        <h6 class="fw-bold mb-2" style="color:#222; line-height: 1.4;">{entry.title}</h6>
-                        <a href="{entry.link}" target="_blank" class="btn btn-sm btn-link p-0 text-decoration-none fw-bold" style="font-size: 0.75rem;">LEER NOTA COMPLETA →</a>
-                    </div>
-                </div>"""
-        else:
-            noticias_html += f"<p class='text-center text-muted mt-4 small'>Sincronizando con el nodo regional... (Status: {r.status_code})</p>"
-            
-    except Exception:
-        noticias_html += f"<p class='text-center text-muted mt-4 small'>Actualizando flujo de información...</p>"
-
-    # Hora de Monterrey (GMT-6)
-    hora_mty = (datetime.utcnow() - timedelta(hours=6)).strftime("%H:%M")
-
-    return f"""
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InfoGarcía 24</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {{ background-color: #f0f2f5; font-family: -apple-system, sans-serif; }}
-        .navbar {{ background-color: #ffffff; border-bottom: 1px solid #dee2e6; }}
-        .navbar-brand {{ color: #002d5a !important; font-weight: 800; font-size: 1.4rem; }}
-        .badge-time {{ background: #f8f9fa; color: #6c757d; padding: 6px 15px; border-radius: 30px; font-size: 0.85rem; font-weight: 600; border: 1px solid #dee2e6; }}
-    </style>
-</head>
-<body>
-    <nav class="navbar sticky-top shadow-sm py-2">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand" href="#">INFO<span style="color:#ff6600;">GARCÍA</span>24</a>
-            <span class="badge-time">🕒 {hora_mty}</span>
-        </div>
-    </nav>
-    <div class="container py-4">
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <h6 class="text-muted small mb-3 fw-bold" style="letter-spacing: 1px;">PORTAL DE INFORMACIÓN GARCÍA, N.L.</h6>
-                {noticias_html}
-                <div class="text-center mt-5 mb-4 text-muted" style="font-size: 0.7rem;">
-                    &copy; 2026 InfoGarcía 24 - Comunicación Independiente
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-"""
-
-if __name__ == "__main__":
-    with open("index.html", "w", encoding="utf-8") as f:
-        f.write(generar_sitio())
+    hora = (datetime.utcnow() - timedelta(hours=6)).strftime("%H:%M")
+    # (Aquí generas tu index.html uniendo bloque_ia + noticias_reales_html)
