@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Python
         uses: actions/setup-python@v4
@@ -26,10 +28,10 @@ jobs:
       - name: Ejecutar Bot
         run: python cuervo_bot.py
 
-      - name: Publicar Cambios
+      - name: Publicar Cambios Forzados
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add .
-          git commit -m "Nuevas noticias y articulos de IA" || exit 0
-          git push
+          git add -A
+          git commit -m "Actualizacion Crítica InfoGarcia24" || echo "No hay cambios para subir"
+          git push origin main
