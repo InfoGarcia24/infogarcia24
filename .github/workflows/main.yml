@@ -3,36 +3,33 @@ name: Actualizar Noticias
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */2 * * *' # Corre cada 2 horas
+    - cron: '0 */2 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
 
     steps:
-      - name: Checkout del código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configurar Python
+      - name: Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Instalar dependencias
-        run: |
-          pip install feedparser requests beautifulsoup4
+      - name: Librerias
+        run: pip install feedparser requests beautifulsoup4
 
-      - name: Ejecutar script de noticias
+      - name: Ejecutar Bot
         run: python cuervo_bot.py
 
-      - name: Guardar cambios en el repositorio
+      - name: Publicar Cambios
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
           git add .
-          git commit -m "Actualización de noticias y artículos IA" || exit 0
+          git commit -m "Nuevas noticias y articulos de IA" || exit 0
           git push
