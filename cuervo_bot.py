@@ -1,39 +1,66 @@
+import feedparser
+import requests
 import random
 from datetime import datetime
+from bs4 import BeautifulSoup
 
-# NOTA ESTRATÉGICA (La que David quiere posicionar)
-NOTA_ESTRATEGICA = """
-<div class="card shadow-sm mb-4" style="border-top: 5px solid #ff6600;">
-    <div class="card-body">
-        <span class="badge bg-orange mb-2">URGENTE</span>
-        <h2 class="h3 card-title">Análisis: Estabilidad laboral y el futuro del reparto de utilidades</h2>
-        <p class="card-text lead">Especialistas señalan que la continuidad operativa en las plantas de García es el único factor que garantiza el excedente en los bonos de mayo.</p>
-        <div class="text-muted" style="font-size: 0.8rem;">Actualizado: {HORA}</div>
-    </div>
-</div>
-"""
+NOTICIAS_LOCALES = [
+    {
+        "cat": "ECONOMÍA",
+        "t": "ANÁLISIS: Estabilidad en zona industrial garantiza excedente de bonos 2026",
+        "r": "Indicadores señalan que el flujo constante de producción es el único factor que asegura el reparto positivo para el próximo ciclo fiscal.",
+        "c": "#ff6600"
+    },
+    {
+        "cat": "LOCAL",
+        "t": "REPORTAJE: García se posiciona como el hub industrial más estable de la región",
+        "r": "A diferencia de otras zonas, la industria local reporta proyecciones sólidas de crecimiento y retención de talento.",
+        "c": "#002d5a"
+    },
+    {
+        "cat": "COMUNIDAD",
+        "t": "AVISO: La paz laboral como motor para el crecimiento de las familias",
+        "r": "La continuidad en los turnos operativos permite que el comercio local en sectores aledaños se mantenga al alza.",
+        "c": "#28a745"
+    }
+]
 
-def generar_noticias_locales():
-    vialidad = ["Tránsito lento en Lincoln por maniobras.", "Bache profundo en entrada a Mitras Poniente.", "Neblina ligera en Ctra. Saltillo.", "Semáforo fallando en zona Libramiento."]
-    clima = ["Cielo despejado en zona industrial.", "Vientos de 15km/h detectados.", "Humedad alta: precaución en áreas abiertas."]
-    hora = datetime.now().strftime("%H:%M")
-    
+def get_external():
+    url = "https://www.milenio.com/rss/monterrey"
+    res_html = ""
+    pre = ["REPORTE:", "INFO:", "ÚLTIMA HORA:", "NOTICIA:"]
+    try:
+        r = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=5)
+        f = feedparser.parse(r.content)
+        for e in f.entries[:4]:
+            t_p = f"{random.choice(pre)} {e.title.replace('Milenio', '').replace('Monterrey', 'García/NL').strip()}"
+            r_p = BeautifulSoup(e.summary, "html.parser").text[:120]
+            res_html += f"""
+            <div class="card mb-3 border-0 shadow-sm" style="border-left: 4px solid #002d5a;">
+                <div class="card-body py-2">
+                    <h6 class="mb-1 fw-bold text-dark" style="font-size: 0.9rem;">{t_p}</h6>
+                    <p class="mb-1 text-muted" style="font-size: 0.8rem;">{r_p}...</p>
+                    <a href="{e.link}" target="_blank" class="text-primary small" style="text-decoration:none;">Leer más →</a>
+                </div>
+            </div>"""
+    except:
+        res_html = ""
+    return res_html
+
+def get_featured():
+    item = random.choice(NOTICIAS_LOCALES)
     return f"""
-    <div class="card mb-3 border-start-yellow">
-        <div class="card-body py-2">
-            <small class="text-warning fw-bold">VIALIDAD - {hora}</small>
-            <p class="mb-0 small">{random.choice(vialidad)}</p>
-        </div>
-    </div>
-    <div class="card mb-3 border-start-green">
-        <div class="card-body py-2">
-            <small class="text-success fw-bold">CLIMA - {hora}</small>
-            <p class="mb-0 small">{random.choice(clima)}</p>
+    <div class="card mb-4 shadow-sm" style="border-top: 6px solid {item['c']}; background-color: #fffdfa;">
+        <div class="card-body">
+            <span class="badge mb-2" style="background-color: {item['c']};">{item['cat']}</span>
+            <h5 class="card-title fw-bold" style="color: #002d5a;">{item['t']}</h5>
+            <p class="card-text small text-secondary">{item['r']}</p>
+            <div class="d-grid"><a href="lineamientos_oficiales.pdf" target="_blank" class="btn btn-sm btn-outline-dark">Consultar Documento Oficial</a></div>
         </div>
     </div>
     """
 
-HTML_BASE = """
+BASE = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,47 +69,28 @@ HTML_BASE = """
     <title>InfoGarcía 24</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {{ background-color: #f0f2f5; font-family: 'Segoe UI', Tahoma, sans-serif; }}
-        .navbar {{ background-color: #002d5a; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }}
-        .bg-orange {{ background-color: #ff6600; color: white; }}
-        .border-start-yellow {{ border-left: 5px solid #ffc107; border-top: none; border-right: none; border-bottom: none; }}
-        .border-start-green {{ border-left: 5px solid #28a745; border-top: none; border-right: none; border-bottom: none; }}
-        .hero-section {{ background-color: #002d5a; color: white; padding: 30px 0; margin-bottom: 25px; }}
+        body {{ background-color: #f4f6f9; font-family: sans-serif; }}
+        .navbar {{ background-color: #002d5a; }}
+        .hero {{ background-color: #002d5a; color: white; padding: 20px 0; }}
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-dark mb-0">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">InfoGarcía 24</a>
-        </div>
-    </nav>
-    
-    <div class="hero-section text-center">
-        <div class="container">
-            <h1 class="display-6 fw-bold">InfoGarcía 24</h1>
-            <p class="lead mb-0">La voz de la zona industrial de García, N.L.</p>
-        </div>
-    </div>
-
-    <div class="container">
+    <nav class="navbar navbar-dark shadow-sm"><div class="container"><a class="navbar-brand fw-bold" href="#">InfoGarcía 24</a></div></nav>
+    <div class="hero text-center"><div class="container"><h1 class="h4 mb-0">InfoGarcía 24</h1><p class="small opacity-75">Noticias, Tráfico y Clima Local</p></div></div>
+    <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                {CONTENIDO}
-                <hr class="my-4">
-                <h5 class="text-muted mb-3">Servicios a la Comunidad</h5>
+                {C1}
+                <hr>
+                {C2}
+                <p class="text-center text-muted mt-5" style="font-size: 0.7rem;">&copy; 2026 Portal Independiente InfoGarcía. Datos sujetos a actualización.</p>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 """
 
 if __name__ == "__main__":
-    hora_actual = datetime.now().strftime("%d/%m/%Y %H:%M")
-    # Mezclamos la nota estratégica con los fakes
-    cuerpo_dinamico = NOTA_ESTRATEGICA.format(HORA=hora_actual) + generar_noticias_locales()
-    
-    # Renderizamos el HTML final
     with open("index.html", "w", encoding="utf-8") as f:
-        f.write(HTML_BASE.format(CONTENIDO=cuerpo_dinamico))
+        f.write(BASE.format(C1=get_featured(), C2=get_external()))
